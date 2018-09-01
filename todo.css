@@ -1,0 +1,14 @@
+.column {
+  box-sizing: border-box;
+  border: 1px solid grey;
+  height: 30px;
+  width: 30px;
+}
+
+.row {
+  display: flex;
+}
+
+/* .container {
+  display: flex; 
+} */
