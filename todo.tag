@@ -72,8 +72,9 @@
       e.preventDefault();
       //e.item.col.mine ? e.item.col.mine = false : e.item.col.mine = true;
       //e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true;
-      e.ctrlKey ? e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true : null;
-      console.log(e.ctrlKey);
+      e.type === "contextmenu" || e.ctrlKey ? e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true : null;
+      //e.type === "contextmenu" || e.ctrlKey ? console.log(true) : console.log(false);
+      // console.log(e.ctrlKey);
     }
 
     this.randomNum = function(min, max){
