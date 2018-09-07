@@ -75,7 +75,8 @@
 
     clickEvent(e){
       e.preventDefault();
-      e.item.col.mine ? this.gameState.status = "gameover" : e.item.col.show = true;
+      this.gameState.status !== "gameover"? e.item.col.mine ? this.gameState.status = "gameover" : e.item.col.show = true: null;
+      
     }
 
     test(e){
