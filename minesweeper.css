@@ -9,6 +9,14 @@
   display: flex;
 }
 
+.show {
+  background-color: gray;
+}
+
+.mine {
+  background-color: red;
+}
+
 /* .container {
   display: flex; 
 } */

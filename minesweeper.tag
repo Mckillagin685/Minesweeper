@@ -41,12 +41,12 @@
   </script>
 </todo>  -->
 
-<todo>
+<minesweeper>
   <h3>To do Tag</h3>
 
   <div class="container">
     <div each={ row, i in grid } class="row">
-      <div each={ col, i in row } class="column" oncontextmenu={test} onclick={test}>{ m: col.mine, f: col.flag}</div>
+      <div each={ col, i in row } class="column { show: col.show, mine: col.mine && gameState.status === "gameover" }" oncontextmenu={contextMenuEvent} onclick={clickEvent}>{ "#": col.mine && gameState.status === "gameover", f: col.flag, `?{col.nearMines}`: col.nearMines > 0 && col.show}</div>
     </div>
   </div>
 
@@ -68,13 +68,19 @@
         return showLimit > 0 ? randomBoolean : false;
       }
 
+    contextMenuEvent(e){
+      e.preventDefault();
+      e.type === "contextmenu" || e.ctrlKey ? e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true : null;
+    }
+
+    clickEvent(e){
+      e.preventDefault();
+      e.item.col.mine ? this.gameState.status = "gameover" : e.item.col.show = true;
+    }
+
     test(e){
       e.preventDefault();
-      //e.item.col.mine ? e.item.col.mine = false : e.item.col.mine = true;
-      //e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true;
-      e.type === "contextmenu" || e.ctrlKey ? e.item.col.flag ? e.item.col.flag = false : e.item.col.flag = true : null;
-      //e.type === "contextmenu" || e.ctrlKey ? console.log(true) : console.log(false);
-      // console.log(e.ctrlKey);
+      console.log(e);
     }
 
     this.randomNum = function(min, max){
@@ -85,7 +91,7 @@
     for (var y = 0; y < this.height; y++){
       this.grid[`row${y}`] = {};
       for (var x = 0; x < this.width; x++){
-        this.grid[`row${y}`][`col${x}`] = {col: x, row: y, mine: null, flag: null}
+        this.grid[`row${y}`][`col${x}`] = {col: x, row: y, mine: false, flag: false, show: false, nearMines: 0}
       }
     }
 
@@ -107,4 +113,4 @@
     this.placeMines()
 
   </script>
-</todo>
+</minesweeper>
