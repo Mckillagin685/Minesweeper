@@ -42,7 +42,7 @@
 </todo>  -->
 
 <minesweeper>
-  <h3>To do Tag</h3>
+  <h3>Minesweeper Tag</h3>
 
   <div class="container">
     <div each={ row, i in grid } class="row">
